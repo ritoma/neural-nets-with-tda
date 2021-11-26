@@ -130,3 +130,6 @@ dmypy.json
 
 # Large files
 *.npy
+
+# Google Drive Backup and Sync
+desktop.ini
