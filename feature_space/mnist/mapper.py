@@ -15,7 +15,7 @@ def scaling(data, feature_range = (0, 1)):
 	data = scaler.fit_transform(data)
 	return data
 
-def mapper_pca_vne(data, resolution, gain):
+def mapper_pca_vne(data, layer, resolution, gain):
 
 	# data = scaling(data)
 
@@ -40,5 +40,11 @@ def mapper_pca_vne(data, resolution, gain):
 	)
 
 	html = mapper.visualize(graph,
-		path_html = 'kepler-mapper-output_' + str(resolution) + '_' + str(gain) + '.html',
+		path_html = 'kepler-mapper-output_' + 'layer_' + str(layer) + str(resolution) + '_' + str(gain) + '.html',
 	)
+
+def mapper_pipeline(data, layer):
+
+	mapper_pca_vne(data, layer, resolution = 10, gain = 2)
+	mapper_pca_vne(data, layer, resolution = 10, gain = 3)
+	mapper_pca_vne(data, layer, resolution = 10, gain = 4)
